@@ -43,7 +43,6 @@ var createBody = (name, email) => {
 }
 
 var createBodyRestorePassword = (name, email, URL) => {
-    console.log('URL', URL, email, name)
     return compiledFunctionRestorePassword({
         name: name,
         email: email,
@@ -68,7 +67,6 @@ exports.sendEmail = (name, email) => {
 exports.sendEmailResetPassword = (name, email, token) => {
 
     const URL = URL_BACKEND + '/api/restore-password/' + token;
-    console.log(email)
 
     // We define the email
     var mailOptions = {

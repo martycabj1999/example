@@ -102,6 +102,7 @@ const ModalChangeAvatar = (props) => {
                 const form = new FormData()
                 form.append('avatar', image)
                 let response = await userRepository.setAvatar(form)
+
                 localStorage.setItem('avatar-test', response.avatar)
                 dispatch(setAvatarAction(response.avatar))
                 setMsgValidation(successImage)

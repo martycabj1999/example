@@ -1,8 +1,8 @@
-const avatarImg = localStorage.getItem("avatar");
+const avatarImg = localStorage.getItem("avatar-test");
 
 //cada reducer tiene su propio state
 const initialState = {
-    avatar : avatarImg ? avatarImg : {},
+    avatar: avatarImg ? avatarImg : {},
     error: null,
     loading: false
 }
@@ -12,8 +12,8 @@ export default function (state = initialState, action) {
 
         case 'SET_AVATAR':
             return {
-                ...state, 
-                avatar:action.payload
+                ...state,
+                avatar: action.payload
             }
         default:
             return state;

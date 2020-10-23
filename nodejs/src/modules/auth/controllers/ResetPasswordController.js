@@ -25,7 +25,6 @@ module.exports.forgibbenPasswordAction = async function (req, res) {
 
     let response = logRequest(req)
 
-    console.log(req.body.email)
 
     const userMail = await verifyEmail(req.body.email)
 
@@ -101,11 +100,13 @@ module.exports.getRestorePasswordAction = async function (req, res) {
 
     jwt.verify(token, JWT_SECRET, (err, data) => {
         if (err) {
+            console.error('error', err)
             response.message = 'The token is not valid'
             return res.status(403).json(response)
         } else {
-            // const sc = {tok: token}
-            //     res.render('auth/reset-pass',{sc});
+            console.log('data', data)
+            /* const sc = { tok: token }
+            res.render('/restore-password', { sc }); */
             response.message = 'The token is valid'
             return res.status(200).json(response)
         }

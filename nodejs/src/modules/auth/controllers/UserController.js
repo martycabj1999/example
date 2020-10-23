@@ -13,13 +13,12 @@ import {
 import {
     changeAvatar
 } from '../services/CreateAvatarService'
-import randomString from '../utils/randomString'
 import {
     URL_BACKEND
 } from '../../../../config'
 import {
-    AWS_S3_BUCKET_AVATAR_FOLDER
-} from '../../../../config'
+    emailService
+} from '../services/EmailService'
 import {
     MessageResponse
 } from '../../../helpers/messageResponse'/* 
@@ -202,6 +201,8 @@ module.exports.addUserAction = async function (req, res) {
 
     try {
         const user = await addUser(name, phone, email, password, role, state)
+
+        await emailService(name, email)
 
         response.data = user
         res.status(201).send(response)

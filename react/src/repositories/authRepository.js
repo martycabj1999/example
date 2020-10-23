@@ -9,6 +9,6 @@ export default {
     return Repository.post(`/users/create`, data);
   },
   sendEmail(email) {
-    return Repository.post(`/forgibben-password`, { email });
+    return Repository.post(`/forgibben-password`, email);
   },
 };
