@@ -1,0 +1,87 @@
+{
+    "name": "react",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@babel/preset-env": "^7.9.0",
+        "@babel/preset-react": "^7.9.4",
+        "@material-ui/core": "^4.9.0",
+        "@material-ui/icons": "^4.5.1",
+        "@material-ui/lab": "^4.0.0-alpha.40",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.4.0",
+        "@testing-library/user-event": "^7.2.1",
+        "axios": "^0.19.2",
+        "babel-jest": "^25.2.6",
+        "dotenv": "^8.2.0",
+        "jwt-decode": "^2.2.0",
+        "mongojs": "^3.1.0",
+        "node-device-detector": "^1.2.2",
+        "npm-check-updates": "^4.0.1",
+        "prop-types": "^15.7.2",
+        "react": "^16.12.0",
+        "react-color": "^2.18.0",
+        "react-color-picker": "^4.0.2",
+        "react-device-detect": "^1.11.14",
+        "react-dom": "^16.12.0",
+        "react-google-maps": "^9.4.5",
+        "react-places-autocomplete": "^7.2.1",
+        "react-redux": "^7.2.0",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "3.4.0",
+        "react-tabs": "^3.1.0",
+        "react-test-renderer": "^16.13.1",
+        "redux": "^4.0.5",
+        "redux-thunk": "^2.3.0",
+        "sweetalert2": "^9.17.2",
+        "typeface-roboto": "0.0.75"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "jest --verbose",
+        "test:watch": "jest --watchAll --verbose",
+        "test:coverage": "jest --verbose --coverage",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "eslint-plugin-react-hooks": "^2.3.0",
+        "history": "^4.10.1",
+        "jest": "^25.2.7"
+    },
+    "jest": {
+        "verbose": true,
+        "setupFilesAfterEnv": [
+            "<rootDir>/src/__test__/setupTest.js"
+        ],
+        "moduleFileExtensions": [
+            "js",
+            "jsx"
+        ],
+        "moduleDirectories": [
+            "node_modules",
+            "bower_components",
+            "shared"
+        ],
+        "moduleNameMapper": {
+            "\\.(styl|css)$": "<rootDir>/src/__mocks__/styleMock.js"
+        }
+    }
+}
