@@ -9,7 +9,9 @@ import {
     SMTP_PORT,
     SMTP_SECURE,
     SMTP_USER,
-    SMTP_PASS
+    SMTP_PASS,
+    SUBJECT_MAIL,
+    URL_BACKEND
 } from '../config';
 
 var requireAuth = () => {
@@ -23,11 +25,11 @@ var requireAuth = () => {
                 pass: SMTP_PASS // Your password
             }
         } :
-        {
-            host: SMTP_HOST,
-            port: SMTP_PORT,
-            secure: SMTP_SECURE
-        }
+            {
+                host: SMTP_HOST,
+                port: SMTP_PORT,
+                secure: SMTP_SECURE
+            }
     )
 }
 
@@ -41,6 +43,7 @@ var createBody = (name, email) => {
 }
 
 var createBodyRestorePassword = (name, email, URL) => {
+    console.log('URL', URL, email, name)
     return compiledFunctionRestorePassword({
         name: name,
         email: email,
@@ -50,7 +53,6 @@ var createBodyRestorePassword = (name, email, URL) => {
 
 
 exports.sendEmail = (name, email) => {
-
     // We define the email
     var mailOptions = {
         from: SMTP_USER,
@@ -66,6 +68,8 @@ exports.sendEmail = (name, email) => {
 exports.sendEmailResetPassword = (name, email, token) => {
 
     const URL = URL_BACKEND + '/api/restore-password/' + token;
+    console.log(email)
+
     // We define the email
     var mailOptions = {
         from: SMTP_USER,

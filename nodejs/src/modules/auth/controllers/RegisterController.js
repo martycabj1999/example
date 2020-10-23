@@ -29,8 +29,7 @@ export const registerAction = async function (req, res) {
 
     const result = await registerUserService(name, phone, email, password)
 
-    /* const sendEmail = await emailService(req.body.name,
-        req.body.email) */
+    await emailService(req.body.name, req.body.email)
 
     if (result.dataValues) {
         response.data = result.dataValues

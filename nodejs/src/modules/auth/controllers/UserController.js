@@ -98,36 +98,19 @@ module.exports.readAvatarAction = async function (req, res) {
 module.exports.createAvatarAction = async function (req, res) {
 
     let response = logRequest(req)
-
-    let {
-        user,
-        file
-    } = req
-
-    if (!req.file) {
-        response.message = MessageResponse.missingParam()
-        res.status(400).send(response)
-    }
-    const imgUrl = randomString()
     try {
-        /* await uploadFileS3(file, AWS_S3_BUCKET_AVATAR_FOLDER, async (err, data) => {
-            //an error occurred while uploading the file
-            if (err) {
-                return response(res, 500)
-            }
-            const avatarResult = await changeAvatar(user.id, data.Location, file.originalname, file
-                .size)
-
-            if (!avatarResult) {
-                response.message = MessageResponse.dbError()
-                return res.status(400).send(response)
-            }
-
-            response.data = data.Location
-            response.message = MessageResponse.isUploaded()
-            return res.status(200).send(response)
-
-        }, imgUrl) */
+        if (!req.file) {
+            res.status(422).send("Faltan parametros (file)")
+        }
+        const avatarResult = await changeAvatar(req.user.id, req.user.name, req.file.path, req.file.originalname, req.file.size);
+        if (avatarResult.state) {
+            response.data = { msg: avatarResult.msg, avatar: process.env.URL_BACKEND + '/' + avatarResult.avatar }
+            res.status(200).send(response);
+        } else {
+            logError(req, avatarResult.msg)
+            response.errors.push(avatarResult.msg)
+            return res.status(500).send(response)
+        }
 
     } catch (error) {
         logError(req, error)

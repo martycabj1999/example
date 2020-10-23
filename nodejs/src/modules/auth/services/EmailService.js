@@ -16,17 +16,20 @@ import {
  */
 export const emailService = async function (name, email) {
     try {
+        console.log('name', name)
         ProviderSMTP.sendEmail(name, email)
             .then(response => {
+                console.log('response', response)
                 return response
             })
             .catch(error => {
+                console.log('error', error)
                 console.error(error);
                 return error
             })
     } catch (error) {
         logError('emailService', error)
-        throw (MessageResponse.serviceCatch(error))
+        throw ('error Send mail')
     }
 }
 

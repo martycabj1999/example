@@ -21,7 +21,17 @@ export class MessageResponse {
     static generalError() {
         return this.messageFormat('An error occured during the process');
     }
-
+    /**
+        *
+        *
+        * @static
+        * @param {string} error
+        * @returns {string}
+        * @memberof MessageResponse
+        */
+    static serviceCatch(error) {
+        return this.messageFormat(error);
+    }
     /////// ***************************** PROCESS MESSAGES 
     /**
      *

@@ -25,6 +25,8 @@ module.exports.forgibbenPasswordAction = async function (req, res) {
 
     let response = logRequest(req)
 
+    console.log(req.body.email)
+
     const userMail = await verifyEmail(req.body.email)
 
     if (userMail.state) {
@@ -34,8 +36,7 @@ module.exports.forgibbenPasswordAction = async function (req, res) {
         }, JWT_SECRET, {
             expiresIn: '3600s'
         });
-        const sendEmail = await emailServiceResetPassword(userMail.user.name, req.body
-            .email, token)
+        const sendEmail = await emailServiceResetPassword(userMail.name, user, token)
         response.message = userMail.msg
         return res.status(200).json({
             response,
@@ -69,8 +70,7 @@ module.exports.changeForgibbenPasswordAction = async function (req, res) {
             return res.status(403).json(response)
         } else {
             const userId = await verifyEmail(data.user)
-            const user = await updatePasswordAdmin(userId.user._id, req.body
-                .password);
+            const user = await updatePasswordAdmin(userId.user._id, req.body.password);
 
             if (!user) {
                 response.message = 'The user with that ID does not exist'

@@ -27,7 +27,7 @@ module.exports = (sequelize, type) => {
         },
         avatar: {
             type: type.STRING,
-            defaultValue: 'https://battletime.s3.us-east-2.amazonaws.com/avatar/rapper-8.jpg'
+            defaultValue: 'assets/avatar/user.png'
         },
         state: {
             type: type.BOOLEAN,
