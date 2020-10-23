@@ -23,7 +23,7 @@ sequelize.sync()
     .then(async () => {
         logger.info('Connection with MySql through Sequelize')
         let salt = bcryptjs.genSaltSync(10);
-        let hashPassword = bcryptjs.hashSync('123456', salt);
+        let hashPassword = bcryptjs.hashSync('123123', salt);
 
         await Role.create({
             name: 'admin',

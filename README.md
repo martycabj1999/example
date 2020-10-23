@@ -20,6 +20,7 @@ The project is made with **React Js** on the frontend, **NodeJs** on the backend
 - The file **.env.example** must be renamed, with the name **.env**
 - Create the Database with the name **test**
 - Perform **npm run init-db** to initialize the MySql database
+- Email **admin@gmail.com** password **123123**
 - Verify that the database has been created
 - Do **npm start** to lift the backend which will do it in **localhost:8000**
 
