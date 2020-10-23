@@ -73,7 +73,7 @@ export const routesPrivate = [
         name: "User Management",
         path: '/panel-admin',
         component: PanelAdmin,
-        roles: ['admin'],
+        roles: ['admin', 'user'],
         menuList: true,
         icon: <UserManagementIcon />,
     }

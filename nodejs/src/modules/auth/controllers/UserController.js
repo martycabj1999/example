@@ -22,10 +22,10 @@ import {
 } from '../../../../config'
 import {
     MessageResponse
-} from '../../../helpers/messageResponse'
+} from '../../../helpers/messageResponse'/* 
 import {
     uploadFileS3
-} from '../../../../config/aws'
+} from '../../../../config/aws' */
 
 /**
  * readUsersAction
@@ -110,7 +110,7 @@ module.exports.createAvatarAction = async function (req, res) {
     }
     const imgUrl = randomString()
     try {
-        await uploadFileS3(file, AWS_S3_BUCKET_AVATAR_FOLDER, async (err, data) => {
+        /* await uploadFileS3(file, AWS_S3_BUCKET_AVATAR_FOLDER, async (err, data) => {
             //an error occurred while uploading the file
             if (err) {
                 return response(res, 500)
@@ -127,7 +127,7 @@ module.exports.createAvatarAction = async function (req, res) {
             response.message = MessageResponse.isUploaded()
             return res.status(200).send(response)
 
-        }, imgUrl)
+        }, imgUrl) */
 
     } catch (error) {
         logError(req, error)
@@ -218,7 +218,6 @@ module.exports.addUserAction = async function (req, res) {
     } = req.body
 
     try {
-
         const user = await addUser(name, phone, email, password, role, state)
 
         response.data = user
@@ -288,7 +287,7 @@ module.exports.updateUserAction = async function (req, res) {
             email
         } = req.body
 
-        const userUpdate = await updateUser(req.user.id, name, phone, email)
+        const userUpdate = await updateUser(req.params.id, name, phone, email)
         response.data = userUpdate
         res.status(200).send(response)
     } catch (error) {

@@ -6,8 +6,8 @@ const repository = axios.create({
   baseURL,
 });
 
-let user = JSON.parse(localStorage.getItem("user"));
-const token = user?.token ? "Bearer " + user?.token : null;
+let user = localStorage.getItem("token-test");
+const token = user ? "Bearer " + user : null;
 
 if (token) {
   repository.defaults.headers.common["Authorization"] = token;
@@ -32,7 +32,7 @@ function removeSidebars() {
 repository.interceptors.response.use(
 
   function (response) {
-    return response.data;
+    return response.data.data;
   },
 
   function (error) {
@@ -54,7 +54,7 @@ repository.interceptors.response.use(
       window.location.href = "/pages/500";
     } else if (error.response.status === 401) {
       if (error.response.data.message !== "Incorrect email and password") {
-        window.location.href = "/pages/unauthorized";
+        //window.location.href = "/pages/unauthorized";
       }
     }
 

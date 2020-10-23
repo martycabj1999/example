@@ -53,7 +53,7 @@ router.put('/api/users/password/:id', authToken, updatePasswordAdminAction)
 router.post('/api/users/user', authToken, addUserActionMiddleware, addUserAction)
 router.get('/api/users/user', authToken, getUserByTokenAction)
 router.get('/api/users/user/:id', authToken, getUserAction)
-router.put('/api/users/user', [authToken, updateUserActionMiddleware], updateUserAction)
+router.put('/api/users/user/:id', [authToken, updateUserActionMiddleware], updateUserAction)
 router.get('/api/users/avatar', authToken, readAvatarAction)
 router.post('/api/users/avatar', [authToken, multerI], createAvatarAction)
 

@@ -3,7 +3,6 @@ const resource = "/users";
 
 export default {
     post(DTO) {
-        console.log(DTO);
         return Repository.post(`${resource}`, DTO);
     },
     recoverPassword(email) {
